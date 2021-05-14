@@ -6,26 +6,35 @@ import {
   MenuItem,
   makeStyles,
   FormGroup,
+  Button,
   Switch,
   AppBar,
   Toolbar,
   FormControlLabel,
+  useMediaQuery,
+  useTheme,
 } from "@material-ui/core";
-import { AccountCircle } from "@material-ui/icons";
+import { AccountCircle, MenuRounded } from "@material-ui/icons";
+import { useAuth } from "../../contexts/AuthContext";
+import { Link } from "react-router-dom";
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
   },
   menuButton: {
     marginRight: theme.spacing(2),
+    color: "white",
   },
   title: {
     flexGrow: 1,
   },
 }));
 function Navbar() {
+  const theme = useTheme();
+  const matches = useMediaQuery(theme.breakpoints.up("md"));
   const classes = useStyles();
-  const [auth, setAuth] = React.useState(true);
+  const { currentUser, logout } = useAuth();
+  const [auth, setAuth] = React.useState(currentUser ? true : false);
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
 
@@ -40,22 +49,42 @@ function Navbar() {
   const handleClose = () => {
     setAnchorEl(null);
   };
+  const commonLinks = [
+    {
+      title: "Find A Service",
+      link: "/",
+    },
+    {
+      title: "Provide A Service",
+      link: "/",
+    },
+    {
+      title: "About Us",
+      link: "/",
+    },
+    {
+      title: "Support",
+      link: "/",
+    },
+  ];
   const authLinks = [
     {
       title: "Profile",
-      onclick: "",
+      link: "/profile",
     },
     {
       title: "My Account",
-      onclick: "",
+      link: "/",
     },
   ];
   const unauthLinks = [
     {
-      title: "Login",
-      onclick: "",
+      title: "Register",
+      link: "/signup",
     },
   ];
+
+  const links = [...commonLinks, ...(auth ? authLinks : unauthLinks)];
   return (
     <div className={classes.root}>
       <AppBar position="fixed">
@@ -63,8 +92,8 @@ function Navbar() {
           <Typography variant="h6" className={classes.title}>
             Photos
           </Typography>
-          <Button color="inherit">Login</Button>
-          {auth && (
+
+          {!matches && (
             <div>
               <IconButton
                 aria-label="account of current user"
@@ -73,8 +102,9 @@ function Navbar() {
                 onClick={handleMenu}
                 color="inherit"
               >
-                <AccountCircle />
+                <MenuRounded />
               </IconButton>
+
               <Menu
                 id="menu-appbar"
                 anchorEl={anchorEl}
@@ -90,11 +120,25 @@ function Navbar() {
                 open={open}
                 onClose={handleClose}
               >
-                <MenuItem onClick={handleClose}>Profile</MenuItem>
-                <MenuItem onClick={handleClose}>My account</MenuItem>
+                {links.map((elem, i) => (
+                  <MenuItem key={i} component={Link} to={elem.link}>
+                    {elem.title}
+                  </MenuItem>
+                ))}
               </Menu>
             </div>
           )}
+          {matches &&
+            links.map((elem, i) => (
+              <Button
+                key={i}
+                className={classes.menuButton}
+                component={Link}
+                to={elem.link}
+              >
+                {elem.title}
+              </Button>
+            ))}
         </Toolbar>
       </AppBar>
     </div>
