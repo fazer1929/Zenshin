@@ -47,7 +47,7 @@ function Login() {
     }
 
     return (
-        <div>
+        <div style={{marginTop:'70px'}}>
             Login
             {/* Login Form Start */}
             <form onSubmit={handleLoginSubmit}>

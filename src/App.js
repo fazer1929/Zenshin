@@ -8,11 +8,15 @@ import Profile from './components/ProfileComponent/Profile';
 import Signup from './components/SignupComponent/Signup';
 import { AuthProvider } from './contexts/AuthContext';
 import PrivateRoute from './PrivateRoute';
+import Navbar from "./components/Navbar/Navbar";
+
 function App() {
   return (
     <>
+    
       <Router>
         <AuthProvider>
+          <Navbar/>
         <Switch>
           <Route exact path="/" component={Homepage} />
           <PrivateRoute exact path="/profile" component={Profile} />
@@ -21,9 +25,10 @@ function App() {
           <Route exact path="/signup" component={Signup} />
           <PrivateRoute exact path="/addService" component={AddService} />
         </Switch>
+        <Footer/>
+
         </AuthProvider>
         </Router>  
-        <Footer/>
     </>
   );
 }

@@ -109,6 +109,8 @@ function AddService() {
             console.log("file not found")
             db.collection("services")
             .doc(currentUser.uid)
+            .collection("service")
+            .doc()
               .set(state,
                 (state.date = new Date())
                 )
@@ -136,6 +138,8 @@ function AddService() {
               .then((url) => {
                 db.collection("services")
                 .doc(currentUser.uid)
+                .collection("service")
+                .doc()
                   .set(
                     state,
                     (state.url = url),

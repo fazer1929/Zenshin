@@ -47,7 +47,7 @@ function Signup() {
     }
 
     return (
-        <div>
+        <div style={{marginTop:'70px'}}>
             Signup
 
             {/* Signup Form  Start*/}
