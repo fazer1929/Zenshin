@@ -28,7 +28,7 @@ const useStyles = makeStyles({
     boxShadow: "rgba(149, 157, 165, 0.2) 0px 8px 24px",
   },
 });
-function Header({ countries, categories }) {
+function Header({ countries, categories, setCurrentServices }) {
   const classes = useStyles();
   const [searched, setSearched] = useState();
   const requestSearch = (searchedVal) => {
