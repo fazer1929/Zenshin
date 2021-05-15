@@ -11,24 +11,31 @@ import PrivateRoute from "./PrivateRoute";
 import Navbar from "./components/Navbar/Navbar";
 import Dashboard from "./components/Dashboard/Dashboard";
 import Account from "./components/ProfileComponent/Account";
+import About from "./components/AboutUS/About";
+import ScrollToTop from "./components/ScrollToTop";
+
 function App() {
   return (
     <>
       <Router>
-        <AuthProvider>
-          <Navbar />
-          <Switch>
-            <Route exact path="/" component={Homepage} />
-            <PrivateRoute exact path="/profile" component={Profile} />
-            <PrivateRoute exact path="/profile/account" component={Account} />
-            <PrivateRoute exact path="/dashboard" component={Dashboard} />
-            <Route exact path="/login" component={Login} />
-            <Route exact path="/resetPassword" component={ForgotPassword} />
-            <Route exact path="/signup" component={Signup} />
-            <PrivateRoute exact path="/addService" component={AddService} />
-          </Switch>
-          <Footer />
-        </AuthProvider>
+        <ScrollToTop>
+          <AuthProvider>
+            <Navbar />
+            <Switch>
+              <Route exact path="/" component={Homepage} />
+              <Route exact path="/about" component={About} />
+
+              <PrivateRoute exact path="/profile" component={Profile} />
+              <PrivateRoute exact path="/profile/account" component={Account} />
+              <PrivateRoute exact path="/dashboard" component={Dashboard} />
+              <Route exact path="/login" component={Login} />
+              <Route exact path="/resetPassword" component={ForgotPassword} />
+              <Route exact path="/signup" component={Signup} />
+              <PrivateRoute exact path="/addService" component={AddService} />
+            </Switch>
+            <Footer />
+          </AuthProvider>
+        </ScrollToTop>
       </Router>
     </>
   );

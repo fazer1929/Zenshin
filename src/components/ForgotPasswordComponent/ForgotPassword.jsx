@@ -1,10 +1,33 @@
+import {
+  Box,
+  Button,
+  Container,
+  Grid,
+  makeStyles,
+  TextField,
+  Typography,
+} from "@material-ui/core";
 import React from "react";
 import { useState } from "react";
 import { useHistory } from "react-router";
 import { useAuth } from "../../contexts/AuthContext";
+import clx from "classnames";
+const useStyles = makeStyles({
+  root: {
+    marginTop: "100px",
+    flexDirection: "column",
+    minHeight: "59vh",
+  },
+  center: {
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+});
 
 function ForgotPassword() {
-  const [email, setEmail] = useState();
+  const classes = useStyles();
+  const [email, setEmail] = useState("");
 
   const { resetPassword } = useAuth();
 
@@ -21,17 +44,46 @@ function ForgotPassword() {
   };
 
   return (
-    <div style={{ marginTop: "70px" }}>
-      <form onSubmit={handleSubmit}>
-        <input
-          type="email"
-          placeholder="Email Address"
-          onChange={(e) => setEmail(e.target.value)}
-        />
-        <button type="submit">Reset Password</button>
-      </form>
-      <button onClick={() => history.push("/login")}>Go to Login Page</button>
-    </div>
+    <>
+      <Grid style={{ marginTop: "100px", marginLeft: "50px" }}>
+        <Typography variant="h4">Forgot Password</Typography>
+      </Grid>
+      <Grid className={clx(classes.root, classes.center)}>
+        <Grid align="center" justify="center">
+          <form
+            onSubmit={handleSubmit}
+            noValidate
+            autoComplete="off"
+            className={classes.center}
+          >
+            <Box mx={2}>
+              <TextField
+                id="outlined-basic"
+                label="Email"
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                variant="outlined"
+              />
+            </Box>
+            <Button variant="outlined" color="primary" onclick={handleSubmit}>
+              Reset Password
+            </Button>
+          </form>
+        </Grid>
+        <Grid justify="center" align="center">
+          <Button
+            onClick={() => history.push("/login")}
+            variant="outlined"
+            size="large"
+            color="secondary"
+            style={{ margin: "50px" }}
+          >
+            Go to Login Page
+          </Button>
+        </Grid>
+      </Grid>
+    </>
   );
 }
 
