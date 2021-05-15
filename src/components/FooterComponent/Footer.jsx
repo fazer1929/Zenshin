@@ -38,6 +38,12 @@ const useStyles = makeStyles({
 
     paddingRight: "20px",
     textAlign: "right",
+    ["@media (max-width:850px)"]: {
+      // eslint-disable-line no-useless-computed-key
+      textAlign: "center",
+      paddingRight: "0px",
+
+    },
   },
   footerBottom: {
     paddingTop: "20px",
