@@ -27,13 +27,13 @@ function Dashboard() {
     <div style={{ marginTop: "90px" }}>
       <Header
         countries={countries}
+        allservices={services}
         setCurrentServices={setCurrentServices}
         categories={categories}
       />
       <Container>
         <Grid container justify="center">
           {currentServices.map((data, i) => {
-            console.log(data, "data");
             return <ServiceCard key={i} data={data} />;
           })}
         </Grid>

@@ -31,7 +31,6 @@ const useStyles = makeStyles({
 
 function ServiceCard({ data }) {
   const classes = useStyles();
-  console.log(data);
   return (
     <Grid xs={12} sm={6} lg={4}>
       <Card className={classes.root} raised>
@@ -58,8 +57,14 @@ function ServiceCard({ data }) {
               {data.information.substr(0, 200)}
               {data.information.length > 200 ? "..." : ""}
             </Typography>
+            <Box my={2}>
+              <Typography variant="body1" component="p">
+                {data?.category?.toUpperCase()}
+              </Typography>
+            </Box>
           </CardContent>
         </CardActionArea>
+
         <CardActions className={classes.bottom}>
           <Button size="small" color="primary">
             Contact

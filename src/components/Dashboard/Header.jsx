@@ -28,14 +28,40 @@ const useStyles = makeStyles({
     boxShadow: "rgba(149, 157, 165, 0.2) 0px 8px 24px",
   },
 });
-function Header({ countries, categories, setCurrentServices }) {
+function Header({ countries, categories, setCurrentServices, allservices }) {
   const classes = useStyles();
   const [searched, setSearched] = useState();
+  const [currService, setCurrService] = useState(allservices);
   const requestSearch = (searchedVal) => {
-    // const filteredRows = originalRows.filter((row) => {
-    //   return row.name.toLowerCase().includes(searchedVal.toLowerCase());
-    // });
-    // setRows(filteredRows);
+    const filteredRows = allservices.filter((row) => {
+      return (
+        row.information
+          .toLowerCase()
+          .includes(searchedVal ? searchedVal.toLowerCase() : "") ||
+        row.title
+          .toLowerCase()
+          .includes(searchedVal ? searchedVal.toLowerCase() : "")
+      );
+    });
+    setCurrentServices(filteredRows);
+  };
+
+  const handleLocationChange = (name) => {
+    const filteredRows = allservices.filter((row) => {
+      return row.location
+        .toLowerCase()
+        .includes(name ? name.toLowerCase() : "");
+    });
+    setCurrentServices(filteredRows);
+  };
+
+  const handleCategoryChange = (name) => {
+    const filteredRows = allservices.filter((row) => {
+      return row.category
+        .toLowerCase()
+        .includes(name ? name.toLowerCase() : "");
+    });
+    setCurrentServices(filteredRows);
   };
 
   const cancelSearch = () => {
@@ -58,6 +84,7 @@ function Header({ countries, categories, setCurrentServices }) {
               options={countries}
               className={clx(classes.remStyle, classes.locationbar)}
               autoSelect
+              onChange={(e) => handleLocationChange(e.target.innerText)}
               renderInput={(params) => (
                 <>
                   <LocationOnIcon />
@@ -92,6 +119,7 @@ function Header({ countries, categories, setCurrentServices }) {
         <Grid xs={6} md={2}>
           <Autocomplete
             id="combo-box-demo"
+            onChange={(e) => handleCategoryChange(e.target.innerText)}
             options={categories}
             autoSelect
             renderInput={(params) => (
