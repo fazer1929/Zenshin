@@ -1,20 +1,10 @@
-import {
-  Typography,
-  Grid,
-  Box,
-  CssBaseline,
-  TextField,
-  Button,
-  Avatar,
-  Paper,
-  makeStyles,
-  Icon,
-} from "@material-ui/core";
-import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
-import React from "react";
-import { useState } from "react";
-import { useHistory } from "react-router";
-import { Link } from "react-router-dom";
+import { Typography, Grid, Box, CssBaseline,TextField,Button, Avatar, Paper, makeStyles, Icon } from '@material-ui/core';
+import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
+import googleLogo from '../../assets/googleLogo.png';
+import React from 'react'
+import { useState } from 'react';
+import { useHistory } from 'react-router';
+import { Link } from 'react-router-dom';
 
 // contexts
 import { useAuth } from "../../contexts/AuthContext";
@@ -103,6 +93,7 @@ function Login() {
         <CssBaseline />
         <Grid item xs={false} sm={4} md={7} className={classes.image} />
         <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
+
           <div className={classes.paper}>
             <Avatar className={classes.avatar}>
               <LockOutlinedIcon />
@@ -140,10 +131,7 @@ function Login() {
                 onChange={(e) => setPassword(e.target.value)}
                 autoComplete="current-password"
               />
-              {/* <FormControlLabel
-              control={<Checkbox value="remember" color="primary" />}
-              label="Remember me"
-            /> */}
+
               <Button
                 type="submit"
                 fullWidth
@@ -165,31 +153,26 @@ function Login() {
                   </Link>
                 </Grid>
               </Grid>
-              <Box mt={5}>
-                <Button
-                  variant="outlined"
-                  color="#fff"
-                  onClick={handleSubmitWithGoogle}
-                  className={classes.button}
-                  startIcon={
-                    <Icon>
-                      <img
-                        src={
-                          "http://assets.stickpng.com/images/5847f9cbcef1014c0b5e48c8.png"
-                        }
-                        style={{ height: "100%", marginBottom: "10px" }}
-                      />
-                    </Icon>
-                  }
-                  style={{ alignItems: "center" }}
-                >
-                  Continue With Google
-                </Button>
-              </Box>
-            </form>
-          </div>
-        </Grid>
+            
+            <Box mt={5}>
+            <Button
+        variant="outlined"
+        color="#fff"
+        onClick={handleSubmitWithGoogle}
+        className={classes.button}
+        startIcon={    <Icon>
+            <img src={googleLogo} style={{height:'100%' ,marginBottom: '10px'}}/>
+        </Icon>}
+        style={{alignItems: 'center' }}
+      >
+        Continue With Google
+      </Button>
+            </Box>
+          </form>
+        </div>
       </Grid>
+      </Grid>
+
     </div>
   );
 }

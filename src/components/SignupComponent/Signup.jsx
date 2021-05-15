@@ -1,23 +1,10 @@
-import {
-  Typography,
-  Grid,
-  Box,
-  CssBaseline,
-  TextField,
-  Button,
-  Avatar,
-  Paper,
-  makeStyles,
-  Icon,
-  FormControlLabel,
-  Checkbox,
-} from "@material-ui/core";
-import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
-
-import React from "react";
-import { useState } from "react";
-import { useHistory } from "react-router";
-import { Link } from "react-router-dom";
+import { Typography, Grid, Box, CssBaseline,TextField,Button, Avatar, Paper, makeStyles, Icon, FormControlLabel, Checkbox } from '@material-ui/core';
+import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
+import googleLogo from '../../assets/googleLogo.png';
+import React from 'react'
+import { useState } from 'react';
+import { useHistory } from 'react-router';
+import {Link} from 'react-router-dom';
 
 // contexts
 import { useAuth } from "../../contexts/AuthContext";
@@ -64,44 +51,50 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function Signup() {
-  const classes = useStyles();
 
-  // routers
-  const history = useHistory();
 
-  // fields defined
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [fullname, setFullname] = useState("");
-  const [servicesProvider, setServicesProvider] = useState(false);
+    const classes = useStyles();
 
-  // auth contexts callings
-  const { signup, signupWithGoogle } = useAuth();
 
-  // Form submition
-  // Form Submition with Email and Password
-  const handleSignupSubmit = async (e) => {
-    e.preventDefault();
-    console.log(email, password, fullname, servicesProvider);
-    // try {
-    //    await  signup(email,password, fullname, servicesProvider);
-    //     history.push('/profile')
-    // }catch{
-    //     window.alert('Signup Failed')
-    // }
-  };
+    // routers
+    const history = useHistory();
 
-  // Form submition with google login
-  const handleSubmitWithGoogle = async (e) => {
-    e.preventDefault();
 
-    try {
-      await signupWithGoogle();
-      history.push("/profile");
-    } catch {
-      window.alert("Signup with google failed");
+    // fields defined
+    const [email,setEmail] = useState('');
+    const [password,setPassword] = useState('');
+    const [fullname,setFullname] = useState('');
+    const [servicesProvider,setServicesProvider] = useState(false);
+
+    // auth contexts callings
+    const {signup,signupWithGoogle} = useAuth();
+
+
+    // Form submition
+        // Form Submition with Email and Password
+     const handleSignupSubmit= async (e)=> {
+
+        e.preventDefault();
+        try {
+           await  signup(email,password, fullname, servicesProvider);
+            history.push('/profile')
+        }catch{
+            window.alert('Signup Failed')
+        }
     }
-  };
+
+
+        // Form submition with google login
+     const handleSubmitWithGoogle=async (e)=> {
+            e.preventDefault();
+
+            try {
+                await signupWithGoogle()
+                history.push("/profile")
+            }catch{
+                window.alert("Signup with google failed")
+            }
+    }
 
   return (
     <div style={{ marginTop: "70px", marginBottom: "10px" }}>
@@ -189,46 +182,20 @@ function Signup() {
                 variant="outlined"
                 color="#fff"
                 onClick={handleSubmitWithGoogle}
-                startIcon={
-                  <Icon>
-                    <img
-                      src={
-                        "http://assets.stickpng.com/images/5847f9cbcef1014c0b5e48c8.png"
-                      }
-                      style={{ height: "100%", marginBottom: "10px" }}
-                    />
-                  </Icon>
-                }
+                startIcon={    <Icon>
+                    <img src={googleLogo} style={{height:'100%' ,marginBottom: '10px'}}/>
+                </Icon>}
               >
                 Continue With Google
               </Button>
             </Box>
-            {/* </form> */}
+            
           </div>
         </Grid>
       </Grid>
     </div>
 
-    // <div style={{marginTop:'70px'}}>
-    //     Signup
-
-    //     {/* Signup Form  Start*/}
-    //     <form onSubmit={handleSignupSubmit}>
-    //     <label>Full Name</label>
-    //     <input type="text" placeholder="Full Name" onChange={(e)=>setFullname(e.target.value)} required/>
-    //     <label>Email Address</label>
-    //     <input type="email" placeholder="Enter your email address" onChange={(e) => setEmail(e.target.value)} required/>
-    //     <label>Password</label>
-    //     <input type="password" placeholder="Enter your password" onChange={(e) => setPassword(e.target.value)} required/>
-    //     <button type="submit">Signup</button>
-    //     </form>
-    //     {/* Signup Form End */}
-
-    //     {/* Signup With Google */}
-    //     <button onClick={handleSubmitWithGoogle}>Continue With Google</button>
-
-    // </div>
   );
-}
+};
 
 export default Signup;
