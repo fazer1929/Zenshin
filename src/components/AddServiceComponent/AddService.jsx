@@ -1,8 +1,9 @@
 import {  Button, FormControl, Grid,  InputLabel, makeStyles, Select, TextField, Typography } from '@material-ui/core';
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import {db, storage} from '../../firebase';
 import {useAuth} from '../../contexts/AuthContext';
 import { useHistory } from 'react-router';
+import firebase from "firebase/app";
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -72,6 +73,25 @@ function AddService() {
         
 
       });
+
+
+
+      const [profile, setProfile] = useState([]);
+    
+      useEffect(() => {
+        if (currentUser) {
+          db.collection("accounts")
+            .doc(currentUser.uid)
+            .onSnapshot(function (doc) {
+              const data = doc.data();
+              setProfile(data);
+            });
+
+       
+          
+        }})
+
+
     
       function handleChangeFile(event) {
         const fileUpload = event.target.files[0];
@@ -107,18 +127,31 @@ function AddService() {
         //   // If submittion successful without file
           if (!file) {
             console.log("file not found")
-            db.collection("services")
-            .doc(currentUser.uid)
-            .collection("service")
-            .doc()
-              .set(state,
-                (state.date = new Date())
-                )
-              .then(() => {
+            db.collection("services")            
+              .add(state,
+                (state.date = new Date()
+                ),
+                (state.uid = currentUser.uid
+                ),
+                (state.fullname = profile.fullname
+                  )
 
-                alert("Form submitted without file successfully");
+                )
+              .then(
+                
+                (docRef) => {
+                    db.collection('accounts')
+                    .doc(currentUser.uid)
+                    .update({ 
+                      serviceId: [...profile.serviceId,docRef.id]
+                    })
+                    .then( () => {
+             alert("Form submitted without file successfully");
                 history.push('/profile')
-              });
+                    })
+   
+              }
+              );
           }
           // If submittion successful with file
           else {
@@ -137,25 +170,38 @@ function AddService() {
               .getDownloadURL()
               .then((url) => {
                 db.collection("services")
-                .doc(currentUser.uid)
-                .collection("service")
-                .doc()
-                  .set(
+                  .add(
                     state,
                     (state.url = url),
                     (state.filename = file.name),
-                    (state.date = new Date())
+                    (state.date = new Date()),
+                    (state.uid = currentUser.uid
+                      )
+
                     
                   )
-                  .then(() => {
-                    alert("Form submitted with file successfully");
-                    history.push('/profile')
-                    // console.log("data successfully uploaded")
-        //             setURL(""),
-        //               setFile(null),
+                  .then(
+                
+                    function(docRef) {
+                      console.log("Document written with ID: ", docRef);
+                  }
+
+        //             () => {
+
+        //             db.collection("accounts").doc(currentUser.uid).set({
+        //               serviceId: 
+        //             });
+
+        //             alert("Form submitted with file successfully");
+        //             history.push('/profile')
+        //             // console.log("data successfully uploaded")
+        // //             setURL(""),
+        // //               setFile(null),
    
 
-                  });
+        //           }
+                  
+                  );
               });
           }
         } else {

@@ -1,6 +1,6 @@
 import { Typography, Grid, Box, CssBaseline,TextField,Button, Avatar, Paper, makeStyles, Icon, FormControlLabel, Checkbox } from '@material-ui/core';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
-
+import googleLogo from '../../assets/googleLogo.png';
 import React from 'react'
 import { useState } from 'react';
 import { useHistory } from 'react-router';
@@ -77,13 +77,12 @@ function Signup() {
      const handleSignupSubmit= async (e)=> {
 
         e.preventDefault();
-        console.log(email, password, fullname, servicesProvider)
-        // try {
-        //    await  signup(email,password, fullname, servicesProvider);
-        //     history.push('/profile')
-        // }catch{
-        //     window.alert('Signup Failed')
-        // }
+        try {
+           await  signup(email,password, fullname, servicesProvider);
+            history.push('/profile')
+        }catch{
+            window.alert('Signup Failed')
+        }
     }
 
 
@@ -182,7 +181,7 @@ function Signup() {
                 color="#fff"
                 onClick={handleSubmitWithGoogle}
                 startIcon={    <Icon>
-                    <img src={'http://assets.stickpng.com/images/5847f9cbcef1014c0b5e48c8.png'} style={{height:'100%' ,marginBottom: '10px'}}/>
+                    <img src={googleLogo} style={{height:'100%' ,marginBottom: '10px'}}/>
                 </Icon>}
               >
                 Continue With Google

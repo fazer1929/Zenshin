@@ -1,5 +1,6 @@
 import { Typography, Grid, Box, CssBaseline,TextField,Button, Avatar, Paper, makeStyles, Icon } from '@material-ui/core';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
+import googleLogo from '../../assets/googleLogo.png';
 import React from 'react'
 import { useState } from 'react';
 import { useHistory } from 'react-router';
@@ -173,7 +174,7 @@ function Login() {
         onClick={handleSubmitWithGoogle}
         className={classes.button}
         startIcon={    <Icon>
-            <img src={'http://assets.stickpng.com/images/5847f9cbcef1014c0b5e48c8.png'} style={{height:'100%' ,marginBottom: '10px'}}/>
+            <img src={googleLogo} style={{height:'100%' ,marginBottom: '10px'}}/>
         </Icon>}
         style={{alignItems: 'center' }}
       >
