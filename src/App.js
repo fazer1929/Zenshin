@@ -10,6 +10,7 @@ import { AuthProvider } from "./contexts/AuthContext";
 import PrivateRoute from "./PrivateRoute";
 import Navbar from "./components/Navbar/Navbar";
 import Dashboard from "./components/Dashboard/Dashboard";
+import About from "./components/AboutUS/About";
 
 function App() {
   return (
@@ -19,6 +20,8 @@ function App() {
           <Navbar />
           <Switch>
             <Route exact path="/" component={Homepage} />
+            <Route exact path="/about" component={About} />
+
             <PrivateRoute exact path="/profile" component={Profile} />
             <PrivateRoute exact path="/dashboard" component={Dashboard} />
             <Route exact path="/login" component={Login} />

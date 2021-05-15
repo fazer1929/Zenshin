@@ -63,11 +63,7 @@ function Navbar() {
     },
     {
       title: "About Us",
-      link: "/",
-    },
-    {
-      title: "Support",
-      link: "/",
+      link: "/about",
     },
   ];
   const authLinks = [
