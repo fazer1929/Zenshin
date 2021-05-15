@@ -9,6 +9,7 @@ import Signup from "./components/SignupComponent/Signup";
 import { AuthProvider } from "./contexts/AuthContext";
 import PrivateRoute from "./PrivateRoute";
 import Navbar from "./components/Navbar/Navbar";
+import Dashboard from "./components/Dashboard/Dashboard";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
           <Switch>
             <Route exact path="/" component={Homepage} />
             <PrivateRoute exact path="/profile" component={Profile} />
+            <PrivateRoute exact path="/dashboard" component={Dashboard} />
             <Route exact path="/login" component={Login} />
             <Route exact path="/resetPassword" component={ForgotPassword} />
             <Route exact path="/signup" component={Signup} />

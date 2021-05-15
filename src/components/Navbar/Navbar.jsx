@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {
   IconButton,
   Typography,
@@ -35,6 +35,9 @@ function Navbar() {
   const classes = useStyles();
   const { currentUser, logout } = useAuth();
   const [auth, setAuth] = React.useState(currentUser ? true : false);
+  useEffect(() => {
+    setAuth(currentUser ? true : false);
+  }, [currentUser]);
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
 
@@ -52,7 +55,7 @@ function Navbar() {
   const commonLinks = [
     {
       title: "Find A Service",
-      link: "/",
+      link: "/dashboard",
     },
     {
       title: "Provide A Service",
@@ -75,6 +78,11 @@ function Navbar() {
     {
       title: "My Account",
       link: "/",
+    },
+    {
+      title: "Logout",
+      link: "/",
+      onclick: logout,
     },
   ];
   const unauthLinks = [
@@ -121,7 +129,12 @@ function Navbar() {
                 onClose={handleClose}
               >
                 {links.map((elem, i) => (
-                  <MenuItem key={i} component={Link} to={elem.link}>
+                  <MenuItem
+                    key={i}
+                    component={Link}
+                    to={elem.link}
+                    onClick={elem.onclick ? elem.onclick : ""}
+                  >
                     {elem.title}
                   </MenuItem>
                 ))}
@@ -134,6 +147,7 @@ function Navbar() {
                 key={i}
                 className={classes.menuButton}
                 component={Link}
+                onClick={elem.onclick ? elem.onclick : ""}
                 to={elem.link}
               >
                 {elem.title}
