@@ -23,7 +23,7 @@ function ForgotPassword() {
     }
 
     return (
-        <div>
+        <div style={{marginTop:'70px'}}>
             <form onSubmit={handleSubmit}>
 
             <input type="email" placeholder="Email Address" onChange={(e) => setEmail(e.target.value)} />

@@ -7,6 +7,7 @@ import YouTubeIcon from '@material-ui/icons/YouTube';
 import LinkedInIcon from '@material-ui/icons/LinkedIn';
 import FacebookIcon from '@material-ui/icons/Facebook';
 import TwitterIcon from '@material-ui/icons/Twitter';
+import { Link } from 'react-router-dom';
 
 const useStyles = makeStyles({
     footer: {
@@ -122,9 +123,11 @@ function Footer() {
         </Box>
         <Box clone order={{ xs: 1, sm: 2 }}>
         <Grid item xs={12} sm={6} >
+            <Link to="/" style={{color: 'inherit', textdecoration: 'none'}}>
         <Typography component="div"  className={classes.footerTopRight} >
             Service Provider
             </Typography>
+            </Link>
         </Grid>
         </Box>
             </Grid>
@@ -144,7 +147,7 @@ function Footer() {
     </Grid>
 <Grid item xs={12} >
 <Typography component="p" className={classes.footerBottomDown} >
-    Copyright &copy; Service Provider
+    Developed by <a href="https://www.linkedin.com/in/abhishekagrawal1929/" target="_blank" style={{ color: '#fc0362', textDecoration: 'none'}}>Abhishek</a>  and <a href="https://www.linkedin.com/in/patelkuldeep/" target="_blank" style={{ color: '#fc0362', textDecoration: 'none'}}> Kuldeep</a>
     </Typography>
 </Grid>
 </Grid>
