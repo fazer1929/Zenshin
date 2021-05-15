@@ -98,7 +98,7 @@ function Navbar() {
       <AppBar position="fixed">
         <Toolbar>
           <Typography variant="h6" className={classes.title}>
-            Photos
+            Zenshin
           </Typography>
 
           {!matches && (
