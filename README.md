@@ -1,70 +1,21 @@
-# Getting Started with Create React App
+## Inspiration
+We observed that many individual and small business (especially but not limited to creatives) were facing a lot of problems reaching their potential customers and  earning money.
+Moreover it is also very difficult for a consumer to find services of daily needs with no prior contacts such as Painting, Plumbing, Sound Design, etc.
+## What it does
+It is a web app which connects service providers with their customers through an easy to use interface, which let's **service providers to grow their business and generate more revenue and the customers to find all kinds of services easily through a few clicks**.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## How we built it
+We Built it Using ReactJs along with Material-UI and ContextAPI for our frontend and Firebase and Firestore for our backend.
 
-## Available Scripts
+## Challenges we ran into
+The main challenge was to decide the workflow so both the customers and the service providers can have ease of access to the platform
+Few other challenges we ran into were implementing the Chat feature, which was difficult to integrate with the entire workflow, the Filters for finding service was also a little tedious. 
 
-In the project directory, you can run:
+## Accomplishments that we're proud of
+It was overall a big project and we're really happy that we were able to make this much progress in just two days. We are also proud of the fact that we made something that can potentially turn into a real product and can help people in the community,
 
-### `npm start`
+## What we learned
+We learnt designing pages with Material-UI, implementing chats with Firestore and Firebase and methods to develop a MVP fast.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## What's next for Zenshin
+As we mentioned, we are considering to turn it to a real product that can benefit the community, and for that we have a lot of optimizations and features to consider such as a more precise location based search, paging, additional security and many more.
