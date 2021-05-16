@@ -1,9 +1,11 @@
 import {
-  
-
-
   Typography,
-  makeStyles, Grid, Paper, MenuList, MenuItem
+  makeStyles,
+  Grid,
+  Paper,
+  MenuList,
+  MenuItem,
+  Container,
 } from "@material-ui/core";
 
 import React, { useEffect, useState } from "react";
@@ -11,20 +13,20 @@ import { useAuth } from "../../contexts/AuthContext";
 import { db, storage } from "../../firebase";
 import Account from "./Account";
 import ProfileContent from "./ProfileContent";
-import userLogo from '../../assets/user.png';
-import Contact from '../ContactComponent/Contact'
+import userLogo from "../../assets/user.png";
+import Contact from "../ContactComponent/Contact";
 import Fade from "react-reveal/Fade";
-
+import { Link } from "react-router-dom";
+import clx from "classnames";
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
     margin: "10px",
   },
-  profileLeft:{
+  profileLeft: {
     display: "flex",
     flexDirection: "column",
     justifyContent: "space-between",
-    maxHeight: "50vh"
   },
   serviceList: {
     width: "100%",
@@ -47,30 +49,30 @@ const useStyles = makeStyles((theme) => ({
       // eslint-disable-line no-useless-computed-key
       width: "250px",
     },
-    // white-space: nowrap;
-    // width: 100px;
-    // overflow: hidden;
-    // text-overflow: ellipsis;
   },
   logoutButton: {
-    backgroundColor: "#ff0000",
+    backgroundColor: theme.palette.error.main,
     "&:hover": {
-      backgroundColor: "#ed8366",
+      backgroundColor: theme.palette.error.light,
     },
   },
-  profileEmail :{
-    fontSize: '18px',
-    margin: '2px'
-
+  profileEmail: {
+    fontSize: "18px",
+    margin: "2px",
   },
-  profileName : {
-    fontSize: '28px',
-    fontWeight: 'bold',
-    margin: '2px'
+  profileName: {
+    fontSize: "28px",
+    fontWeight: "bold",
+    margin: "2px",
   },
-  profileImage : {
-    maxWidth: '100px',margin: "10px"
-  }
+  profileImage: {
+    maxWidth: "100px",
+    margin: "10px",
+  },
+  addServiceButton: {
+    marginTop: "5px",
+    backgroundColor: theme.palette.primary.main,
+  },
 }));
 
 function Profile() {
@@ -104,72 +106,78 @@ function Profile() {
   // },[profile.serviceId])
 
   return (
-    <div style={{ marginTop: "70px", minHeight: "90vh" }}>
+    <Container style={{ marginTop: "100px", minHeight: "90vh" }}>
       <Fade>
-      {currentUser && (
-        <div className={classes.root}>
-          <Grid container spacing={3}>
-            <Grid item xs={12} sm={4}>
-            <div style={{alignItems:'center',textAlign: 'center'}}>
-                <img src={userLogo} className={classes.profileImage}/>
-                <p className={classes.profileName}>{profile?.fullname}</p>
-                <p className={classes.profileEmail}>{profile?.email}</p>
-              </div>
+        {currentUser && (
+          <div className={classes.root}>
+            <Grid container spacing={6}>
+              <Grid item xs={12} sm={4} align="center" justify="center">
+                <Grid>
+                  <div style={{ alignItems: "center", textAlign: "center" }}>
+                    <img src={userLogo} className={classes.profileImage} />
+                    <p className={classes.profileName}>{profile?.fullname}</p>
+                    <p className={classes.profileEmail}>{profile?.email}</p>
+                  </div>
+                </Grid>
+                <Grid>
+                  <Paper className={classes.paper}>
+                    <MenuList>
+                      <MenuItem onClick={() => setMenuNo("1")}>
+                        Profile
+                      </MenuItem>
+                      <MenuItem onClick={() => setMenuNo("2")}>
+                        Account
+                      </MenuItem>
+                      <MenuItem onClick={() => setMenuNo("3")}>
+                        Messages
+                      </MenuItem>
+                      <MenuItem
+                        className={classes.logoutButton}
+                        onClick={logout}
+                      >
+                        Logout
+                      </MenuItem>
+                    </MenuList>
+                  </Paper>
+                  <Paper
+                    className={clx(classes.paper, classes.addServiceButton)}
+                  >
+                    <MenuItem
+                      style={{ justifyContent: "center" }}
+                      component={Link}
+                      to="/addservice"
+                    >
+                      Add Service
+                    </MenuItem>
+                  </Paper>
+                </Grid>
+              </Grid>
+              <Grid item xs={12} sm={8}>
+                {menuNo == "1" ? (
+                  <div>
+                    {services.length > 0 ? (
+                      <div>
+                        {services.map((data, i) => {
+                          return <ProfileContent data={data} key={i} />;
+                        })}
+                      </div>
+                    ) : (
+                      <Typography>
+                        No Service Found, Please Add A New Service
+                      </Typography>
+                    )}
+                  </div>
+                ) : menuNo == "2" ? (
+                  <Account />
+                ) : (
+                  <Contact />
+                )}
+              </Grid>
             </Grid>
-            <Grid item xs={12} sm={8}>
-              
-            </Grid>
-            <Grid item xs={12} sm={4} className={classes.profileLeft}>
-
-              <Paper className={classes.paper}>
-                <MenuList>
-                  <MenuItem onClick={()=>setMenuNo('1')}>Profile</MenuItem>
-                  <MenuItem onClick={()=>setMenuNo('2')}>Account</MenuItem>
-                  <MenuItem onClick={()=>setMenuNo('3')}>Messages</MenuItem>
-                  <MenuItem className={classes.logoutButton} onClick={logout}>
-                    Logout
-                  </MenuItem>
-                </MenuList>
-              </Paper>
-              <Paper className={classes.paper} style={{marginTop: '5px',backgroundColor:"#03CA95"}}>
-                  <MenuItem style={{justifyContent: 'center'}}>
-                  
-                   <a href='/addservice' style={{textDecoration: "none",color:'#191C27'}}>Add Service</a>
-                  </MenuItem>
-                  
-              </Paper>
-            </Grid>
-            <Grid item xs={12} sm={8}>
-          { menuNo == '1' ? ( <div>  
-            
-              {services.length > 0 ? (
-                <div>
-                {services.map((data, i) => {
-                  return <ProfileContent data={data} key={i} />;
-                })}
-              </div>
-              ):(
-
-                <Typography >No Service Found, Please Add A New Service</Typography>
-
-              )}
-              
-               </div>  ) : (
-
-                menuNo == '2' ? (
-
-                  <Account/>
-                  ): <Contact/>
-              )
-
-      }
-            </Grid>
-          </Grid>
-
-        </div>
-      )}
+          </div>
+        )}
       </Fade>
-    </div>
+    </Container>
   );
 }
 

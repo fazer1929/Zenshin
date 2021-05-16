@@ -5,7 +5,7 @@ import categories from "../../constants/categoreis";
 import { db } from "../../firebase";
 import { useAuth } from "../../contexts/AuthContext";
 import ServiceCard from "./ServiceCard";
-import { Container, Grid } from "@material-ui/core";
+import { Container, Grid, makeStyles } from "@material-ui/core";
 import Fade from "react-reveal/Fade";
 
 function Dashboard() {

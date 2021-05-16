@@ -57,10 +57,7 @@ function Navbar() {
       title: "Find A Service",
       link: "/dashboard",
     },
-    {
-      title: "Provide A Service",
-      link: "/",
-    },
+
     {
       title: "About Us",
       link: "/about",
@@ -68,12 +65,12 @@ function Navbar() {
   ];
   const authLinks = [
     {
-      title: "Profile",
+      title: "Services",
       link: "/profile",
     },
     {
-      title: "My Account",
-      link: "/",
+      title: "Profile",
+      link: "/profile/account",
     },
     {
       title: "Logout",
@@ -97,6 +94,8 @@ function Navbar() {
             variant="h6"
             className={classes.title}
             color="inherit"
+            component={Link}
+            to="/"
             style={{ textDecoration: "null" }}
           >
             Zenshin
