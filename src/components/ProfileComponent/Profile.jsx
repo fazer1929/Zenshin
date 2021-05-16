@@ -1,13 +1,9 @@
 import {
   
-  makeStyles,
 
-  Grid,
-  Paper,
 
-  MenuList,
-  MenuItem,
   Typography,
+  makeStyles, Grid, Paper, MenuList, MenuItem
 } from "@material-ui/core";
 
 import React, { useEffect, useState } from "react";
@@ -17,6 +13,7 @@ import Account from "./Account";
 import ProfileContent from "./ProfileContent";
 import userLogo from '../../assets/user.png';
 import Contact from '../ContactComponent/Contact'
+import Fade from "react-reveal/Fade";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -80,7 +77,7 @@ function Profile() {
   const classes = useStyles();
 
   const { currentUser, logout } = useAuth();
-  const [menuNo,setMenuNo] = useState('1');
+  const [menuNo, setMenuNo] = useState("1");
   const [profile, setProfile] = useState([]);
   const [services, setServices] = useState([]);
 
@@ -108,6 +105,7 @@ function Profile() {
 
   return (
     <div style={{ marginTop: "70px", minHeight: "90vh" }}>
+      <Fade>
       {currentUser && (
         <div className={classes.root}>
           <Grid container spacing={3}>
@@ -146,10 +144,10 @@ function Profile() {
             
               {services.length > 0 ? (
                 <div>
-                  {services.map((data, i) => {
-                    return <ProfileContent data={data} key={i} />;
-                  })}
-                </div>
+                {services.map((data, i) => {
+                  return <ProfileContent data={data} key={i} />;
+                })}
+              </div>
               ):(
 
                 <Typography >No Service Found, Please Add A New Service</Typography>
@@ -170,6 +168,7 @@ function Profile() {
 
         </div>
       )}
+      </Fade>
     </div>
   );
 }

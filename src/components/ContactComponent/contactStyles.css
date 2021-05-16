@@ -2,11 +2,7 @@
     background-color: #282c34;
   }
    
-  .App {
-    text-align: center;
-    max-width: 728px;
-    margin: 0 auto;
-  }
+
   
   .App header {
     background-color: #181717;
@@ -33,20 +29,23 @@
     background-color: rgb(40, 37, 53);
   }
    */
+
+   .contact-app {
+    text-align: center;
+    margin: 10px;
+  }
   
   .contact-main {
-    padding: 10px;
-    /* height: 80vh; */
-    /* margin: 10vh 0 10vh; */
+
     overflow-y: scroll;
     display: flex;
     width: 100%;
     flex-direction: column;
   }
-  
   .contact-main::-webkit-scrollbar {
     width: 0.25rem;
   }
+/*   
   
   .contact-main::-webkit-scrollbar-track {
     background: #1e1e24;
@@ -54,7 +53,7 @@
   
   .contact-main::-webkit-scrollbar-thumb {
     background: #6649b8;
-  }
+  } */
   .contact-form {
     height: 10vh;
     bottom: 0;

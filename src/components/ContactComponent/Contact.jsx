@@ -74,7 +74,7 @@ const Chat = (props) => {
   const {currentUser} = useAuth();
 
   return (
-    <div className="App">
+    <div className="contact-app">
       <header>
         <h1>⚛️🔥💬</h1>
       </header>

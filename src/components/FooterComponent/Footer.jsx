@@ -36,7 +36,7 @@ const useStyles = makeStyles({
     margin: "15px",
     fontSize: "24px",
 
-    paddingRight: "20px",
+    paddingRight: "18%",
     textAlign: "right",
     ["@media (max-width:850px)"]: {
       // eslint-disable-line no-useless-computed-key
@@ -126,7 +126,7 @@ function Footer() {
             <Grid item xs={12} sm={6}>
               <Link to="/" style={{ color: "inherit", textdecoration: "none" }}>
                 <Typography component="div" className={classes.footerTopRight}>
-                  Service Provider
+                  Zenshin
                 </Typography>
               </Link>
             </Grid>

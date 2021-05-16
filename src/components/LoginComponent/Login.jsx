@@ -1,11 +1,22 @@
-import { Typography, Grid, Box, CssBaseline,TextField,Button, Avatar, Paper, makeStyles, Icon } from '@material-ui/core';
-import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
-import googleLogo from '../../assets/googleLogo.png';
-import React from 'react'
-import { useState } from 'react';
-import { useHistory } from 'react-router';
-import { Link } from 'react-router-dom';
-
+import {
+  Typography,
+  Grid,
+  Box,
+  CssBaseline,
+  TextField,
+  Button,
+  Avatar,
+  Paper,
+  makeStyles,
+  Icon,
+} from "@material-ui/core";
+import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
+import googleLogo from "../../assets/googleLogo.png";
+import React from "react";
+import { useState } from "react";
+import { useHistory } from "react-router";
+import { Link } from "react-router-dom";
+import Fade from "react-reveal/Fade";
 // contexts
 import { useAuth } from "../../contexts/AuthContext";
 
@@ -89,90 +100,103 @@ function Login() {
 
   return (
     <div style={{ marginTop: "70px", marginBottom: "10px" }}>
-      <Grid container component="main" className={classes.root}>
-        <CssBaseline />
-        <Grid item xs={false} sm={4} md={7} className={classes.image} />
-        <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
-
-          <div className={classes.paper}>
-            <Avatar className={classes.avatar}>
-              <LockOutlinedIcon />
-            </Avatar>
-            <Typography component="h1" variant="h5">
-              Sign in
-            </Typography>
-            <form
-              className={classes.form}
-              onSubmit={handleLoginSubmit}
-              noValidate
-            >
-              <TextField
-                variant="outlined"
-                margin="normal"
-                required
-                fullWidth
-                id="email"
-                label="Email Address"
-                name="email"
-                type="email"
-                onChange={(e) => setEmail(e.target.value)}
-                autoComplete="email"
-                autoFocus
-              />
-              <TextField
-                variant="outlined"
-                margin="normal"
-                required
-                fullWidth
-                name="password"
-                label="Password"
-                type="password"
-                id="password"
-                onChange={(e) => setPassword(e.target.value)}
-                autoComplete="current-password"
-              />
-
-              <Button
-                type="submit"
-                fullWidth
-                variant="contained"
-                color="primary"
-                className={classes.submit}
+      <Fade>
+        <Grid container component="main" className={classes.root}>
+          <CssBaseline />
+          <Grid item xs={false} sm={4} md={7} className={classes.image} />
+          <Grid
+            item
+            xs={12}
+            sm={8}
+            md={5}
+            component={Paper}
+            elevation={6}
+            square
+          >
+            <div className={classes.paper}>
+              <Avatar className={classes.avatar}>
+                <LockOutlinedIcon />
+              </Avatar>
+              <Typography component="h1" variant="h5">
+                Sign in
+              </Typography>
+              <form
+                className={classes.form}
+                onSubmit={handleLoginSubmit}
+                noValidate
               >
-                Sign In
-              </Button>
-              <Grid container>
-                <Grid item xs>
-                  <Link to="resetPassword" variant="body2">
-                    Forgot password?
-                  </Link>
-                </Grid>
-                <Grid item>
-                  <Link to="/signup" variant="body2">
-                    {"Don't have an account? Sign Up"}
-                  </Link>
-                </Grid>
-              </Grid>
-            
-            <Box mt={5}>
-            <Button
-        variant="outlined"
-        color="#fff"
-        onClick={handleSubmitWithGoogle}
-        className={classes.button}
-        startIcon={    <Icon>
-            <img src={googleLogo} style={{height:'100%' ,marginBottom: '10px'}}/>
-        </Icon>}
-        style={{alignItems: 'center' }}
-      >
-        Continue With Google
-      </Button>
-            </Box>
-          </form>
-        </div>
-      </Grid>
-      </Grid>
+                <TextField
+                  variant="outlined"
+                  margin="normal"
+                  required
+                  fullWidth
+                  id="email"
+                  label="Email Address"
+                  name="email"
+                  type="email"
+                  onChange={(e) => setEmail(e.target.value)}
+                  autoComplete="email"
+                  autoFocus
+                />
+                <TextField
+                  variant="outlined"
+                  margin="normal"
+                  required
+                  fullWidth
+                  name="password"
+                  label="Password"
+                  type="password"
+                  id="password"
+                  onChange={(e) => setPassword(e.target.value)}
+                  autoComplete="current-password"
+                />
 
+                <Button
+                  type="submit"
+                  fullWidth
+                  variant="contained"
+                  color="primary"
+                  className={classes.submit}
+                >
+                  Sign In
+                </Button>
+                <Grid container>
+                  <Grid item xs>
+                    <Link to="resetPassword" variant="body2">
+                      Forgot password?
+                    </Link>
+                  </Grid>
+                  <Grid item>
+                    <Link to="/signup" variant="body2">
+                      {"Don't have an account? Sign Up"}
+                    </Link>
+                  </Grid>
+                </Grid>
+
+                <Box mt={5}>
+                  <Button
+                    variant="outlined"
+                    color="#fff"
+                    onClick={handleSubmitWithGoogle}
+                    className={classes.button}
+                    startIcon={
+                      <Icon>
+                        <img
+                          src={googleLogo}
+                          style={{ height: "100%", marginBottom: "10px" }}
+                        />
+                      </Icon>
+                    }
+                    style={{ alignItems: "center" }}
+                  >
+                    Continue With Google
+                  </Button>
+                </Box>
+              </form>
+            </div>
+          </Grid>
+        </Grid>
+      </Fade>
     </div>
   );
 }

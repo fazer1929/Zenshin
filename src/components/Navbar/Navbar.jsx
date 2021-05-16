@@ -16,7 +16,7 @@ import {
 } from "@material-ui/core";
 import { AccountCircle, MenuRounded } from "@material-ui/icons";
 import { useAuth } from "../../contexts/AuthContext";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
@@ -63,11 +63,7 @@ function Navbar() {
     },
     {
       title: "About Us",
-      link: "/",
-    },
-    {
-      title: "Support",
-      link: "/",
+      link: "/about",
     },
   ];
   const authLinks = [
@@ -97,7 +93,12 @@ function Navbar() {
     <div className={classes.root}>
       <AppBar position="fixed">
         <Toolbar>
-          <Typography variant="h6" className={classes.title}>
+          <Typography
+            variant="h6"
+            className={classes.title}
+            color="inherit"
+            style={{ textDecoration: "null" }}
+          >
             Zenshin
           </Typography>
 
