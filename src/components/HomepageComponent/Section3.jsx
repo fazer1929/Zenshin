@@ -41,11 +41,7 @@ function Section3() {
             </Typography>
             <Box my={2} mx={4}>
               <Typography variant="body2" align="justify">
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Iste,
-                reprehenderit enim soluta voluptatibus dolorem ullam
-                necessitatibus hic accusantium rem, laboriosam veritatis
-                sapiente molestias perspiciatis magnam, mollitia dignissimos
-                deserunt ipsa? Repellat?
+              Discover the power of your local community and help local businesses and individuals grow while getting the best services at your ease.
               </Typography>
             </Box>
           </Grid>

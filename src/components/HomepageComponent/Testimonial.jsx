@@ -30,8 +30,7 @@ function Testimonial() {
       <Grid container spacing={3} className={classes.root}>
         <Grid item xs={12} md={6} className={classes.center} align="center">
           <Typography variant="h5">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus
-            consectetur praesentium labore totam.
+          Let's all of us join hands and help and support each other.
           </Typography>
         </Grid>
         <Grid

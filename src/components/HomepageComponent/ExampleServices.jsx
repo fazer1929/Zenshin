@@ -6,22 +6,22 @@ const localdb = [
   {
     title: "Musicians",
     content:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis suscipit quisquam nihil vel, quae nemo nisi ipsum eius quam laudantium voluptatum voluptate exercitationem reiciendis perspiciatis. Mollitia eum beatae pariatur maiores.",
+      "Find the best musicians near you for your videos, movies, projects, parties and everything else.",
   },
   {
     title: "Catrine Service",
     content:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis suscipit quisquam nihil vel, quae nemo nisi ipsum eius quam laudantium voluptatum voluptate exercitationem reiciendis perspiciatis. Mollitia eum beatae pariatur maiores.",
+      "Find delicious catering service for weddings, birthdays, and other events",
   },
   {
     title: "Artists",
     content:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis suscipit quisquam nihil vel, quae nemo nisi ipsum eius quam laudantium voluptatum voluptate exercitationem reiciendis perspiciatis. Mollitia eum beatae pariatur maiores.",
+      "Artists are need for any creative work and you can find one of them here for working offline as well as offline.",
   },
   {
     title: "Everything",
     content:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis suscipit quisquam nihil vel, quae nemo nisi ipsum eius quam laudantium voluptatum voluptate exercitationem reiciendis perspiciatis. Mollitia eum beatae pariatur maiores.",
+      "Your every need from plumbing, painting to music, design and everything in between in one single place.",
   },
 ];
 const useStyles = makeStyles({
