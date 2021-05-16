@@ -10,10 +10,14 @@ import React from "react";
 import PlayCircleFilledRoundedIcon from "@material-ui/icons/PlayCircleFilledRounded";
 import { Redirect } from "react-router";
 import { Link } from "react-router-dom";
-
+import background from "./background.jpg";
 const useStyles = makeStyles({
   root: {
     height: "100vh",
+
+    backgroundImage: `linear-gradient(rgba(255, 0, 0, 0.2),rgba(0, 0, 0, 0.4)) ,url(${background})`,
+    backdropFilter: "blur",
+    backgroundSize: "contain",
   },
 
   innerContainer: {
@@ -27,6 +31,8 @@ const useStyles = makeStyles({
   heading: {
     marginTop: "50px",
     marginBottom: "30px",
+    color: "#fff",
+    fontWeight: "700",
   },
 });
 

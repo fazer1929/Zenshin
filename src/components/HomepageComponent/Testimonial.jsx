@@ -7,6 +7,7 @@ import {
   Typography,
 } from "@material-ui/core";
 import React from "react";
+import { Link } from "react-router-dom";
 
 const useStyles = makeStyles({
   root: {
@@ -43,12 +44,24 @@ function Testimonial() {
           align="center"
         >
           <Grid className={classes.center}>
-            <Button size="medium" variant="contained" color="primary">
+            <Button
+              component={Link}
+              to="/dashboard"
+              size="medium"
+              variant="contained"
+              color="primary"
+            >
               Find Services
             </Button>
           </Grid>
           <Grid className={classes.center}>
-            <Button variant="contained" size="medium" color="secondary">
+            <Button
+              variant="contained"
+              component={Link}
+              to="/dashboard"
+              size="/profile"
+              color="secondary"
+            >
               Provide Services
             </Button>
           </Grid>
