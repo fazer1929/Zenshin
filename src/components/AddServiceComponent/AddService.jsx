@@ -133,7 +133,9 @@ function AddService() {
             db.collection("accounts")
               .doc(currentUser.uid)
               .update({
-                serviceId: [...profile.serviceId, docRef.id],
+                serviceId: profile.serviceId
+                  ? [...profile.serviceId, docRef.id]
+                  : [docRef.id],
               })
               .then(() => {
                 alert("Form submitted without file successfully");

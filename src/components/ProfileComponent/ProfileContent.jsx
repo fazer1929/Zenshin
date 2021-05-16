@@ -28,7 +28,7 @@ const useStyles = makeStyles((theme) => ({
       overflow: 'hidden',
       textOverflow: 'ellipsis',
       ['@media (max-width:850px)']: { // eslint-disable-line no-useless-computed-key
-        width: '250px',
+        width: '200px',
   
       }
       // white-space: nowrap; 

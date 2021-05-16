@@ -39,16 +39,17 @@ const Chat = (props) => {
   });
 
   useEffect(() => {
+    if(props.match?.params){
     setDatas({
       selectTitle: props.match.params.title,
       sendTo: props.match.params.id,
-    })
+    })}
   },[props])
 
   return (
-    <div className='contact-app'>
+    <div className='contact-app' style={{ marginTop: "70px"}}>
       <header>
-        <h1>⚛️🔥💬</h1>
+        <h1>{datas.selectTitle}</h1>
       </header>
 
       <section>
@@ -66,21 +67,40 @@ function ChatRoom(props) {
   const [messages] = useCollectionData(query, { idField: "id" });
 
   const [formValue, setFormValue] = useState("");
+  const { uid, photoURL } = auth.currentUser;
+
+  const [saveSendTo, setSaveSendTo] = useState('');
+
+
+for (var i = 0; i < messages?.length; i++) {
+  if(messages[i].sendTo == uid){
+    console.log("chatrome",messages[i].sendTo)
+    setSaveSendTo(messages[i].uid)
+  }
+  else{
+    console.log("not match")
+  }
+}
+  
 
   const sendMessage = async (e) => {
     e.preventDefault();
 
     const { uid, photoURL } = auth.currentUser;
-    console.log("chatrome",props)
-    await messagesRef.add({
-      text: formValue,
-      //   createdAt: firebase.db.Timestamp.serverTimestamp(),
-      createdAt: new Date(),
-      sendTo: props.match.params.id,
-      selectTitle: props.match.params.title,
-      uid,
-      photoURL,
-    });
+
+    const sendData = {
+      
+        text: formValue,
+        //   createdAt: firebase.db.Timestamp.serverTimestamp(),
+        createdAt: new Date(),
+        sendTo: saveSendTo,
+        selectTitle: props.match.params?.title,
+        uid,
+        photoURL,
+      
+    }
+
+    await messagesRef.add(sendData);
 
     setFormValue("");
     dummy.current.scrollIntoView({ behavior: "smooth" });
@@ -113,15 +133,21 @@ function ChatRoom(props) {
 function ChatMessage(props) {
 
   const { text, uid, photoURL, sendTo,selectTitle } = props.message;
-  const {id, title} = props.props.match.params;
-
-  {console.log(selectTitle, title)}
+  const { currentUser } = useAuth();
+  
+  // const {id, title} = props.props.match.params;
+// {console.log(props)}
+// {console.log(currentUser.uid)}
+  // {console.log(selectTitle, title)}
   const messageClass = uid === auth.currentUser.uid ? "sent" : "received";
 
   return (
 
     <>
-    {  title == selectTitle ?
+    {  
+    // title == selectTitle
+    sendTo == (currentUser.uid) || uid == currentUser.uid
+     ?
       (<div className={`message ${messageClass}`}>
         <img src={photoURL || userLogo} />
         <p>{text}</p>
