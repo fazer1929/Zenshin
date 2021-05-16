@@ -7,6 +7,7 @@ import {
   Select,
   TextField,
   Typography,
+  CircularProgress 
 } from "@material-ui/core";
 import React, { useEffect, useState } from "react";
 import { db, storage } from "../../firebase";
@@ -73,7 +74,7 @@ function AddService() {
   const history = useHistory();
   const [file, setFile] = useState(null);
   const [url, setURL] = useState("");
-
+  const [loading,setLoading] = useState(false);
   const [state, setState] = useState({
     title: "",
     category: "",
@@ -119,28 +120,28 @@ function AddService() {
     console.log(state);
 
     if (currentUser) {
+      setLoading(true)
       //   // If submittion successful without file
       if (!file) {
-        console.log("file not found");
         db.collection("services")
           .add(
             state,
-            (state.date = new Date()),
             (state.uid = currentUser.uid),
             (state.fullname = profile.fullname)
           )
-          .then((docRef) => {
-            db.collection("accounts")
-              .doc(currentUser.uid)
-              .update({
-                serviceId: profile.serviceId
-                  ? [...profile.serviceId, docRef.id]
-                  : [docRef.id],
-              })
-              .then(() => {
-                alert("Form submitted without file successfully");
+          .then(() => {
+          //   db.collection("accounts")
+          //     .doc(currentUser.uid)
+          //     .update({
+          //       serviceId: profile.serviceId
+          //         ? [...profile.serviceId, docRef.id]
+          //         : [docRef.id],
+          //     })
+          //     .then(() => {
+          //       alert("Form submitted without file successfully");
+          setLoading(false);
                 history.push("/profile");
-              });
+          //     });
           });
       }
       // If submittion successful with file
@@ -170,6 +171,8 @@ function AddService() {
               .then(
                 function (docRef) {
                   console.log("Document written with ID: ", docRef);
+          setLoading(false);
+
                 }
 
                 //             () => {
@@ -351,11 +354,19 @@ function AddService() {
               style={{ marginBottom: "35px", width: "50%" }}
               type="submit"
               color="primary"
+              disabled={loading}
             >
               Add service
             </Button>
           </Grid>
+
           <Grid item sm={3}></Grid>
+          <Grid item style={{margin: 'auto'}}>
+
+
+      {  loading ?  <CircularProgress disableShrink /> : ""}
+          </Grid>
+
         </Grid>
       </form>
     </Fade>
