@@ -1,5 +1,13 @@
 # Zenshin
 ## About The Project
+
+### Inspiration
+We observed that many individual and small business (especially but not limited to creatives) were facing a lot of problems reaching their potential customers and  earning money.
+Moreover it is also very difficult for a consumer to find services of daily needs with no prior contacts such as Painting, Plumbing, Sound Design, etc.
+### What it does
+It is a web app which connects service providers with their customers through an easy to use interface, which let's **service providers to grow their business and generate more revenue and the customers to find all kinds of services easily through a few clicks**.
+
+
 ### Tryout Links
 [website](https://service-p.web.app/)
 
@@ -16,12 +24,6 @@
 <img src="https://user-images.githubusercontent.com/39936050/118399316-38ca9d00-b67a-11eb-828c-57422bd04677.png" width="45%" alt="Website Images"/>
 <img src="https://user-images.githubusercontent.com/39936050/118399287-22bcdc80-b67a-11eb-8ba1-114ddb9ce761.png" width="45%" alt="Website Images"/>
 </div>
-
-### Inspiration
-We observed that many individual and small business (especially but not limited to creatives) were facing a lot of problems reaching their potential customers and  earning money.
-Moreover it is also very difficult for a consumer to find services of daily needs with no prior contacts such as Painting, Plumbing, Sound Design, etc.
-### What it does
-It is a web app which connects service providers with their customers through an easy to use interface, which let's **service providers to grow their business and generate more revenue and the customers to find all kinds of services easily through a few clicks**.
 
 ### How we built it
 We Built it Using ReactJs along with Material-UI and ContextAPI for our frontend and Firebase and Firestore for our backend.
