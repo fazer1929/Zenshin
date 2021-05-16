@@ -17,7 +17,7 @@ const useStyles = makeStyles({
 
     backgroundImage: `linear-gradient(rgba(255, 0, 0, 0.2),rgba(0, 0, 0, 0.4)) ,url(${background})`,
     backdropFilter: "blur",
-    backgroundSize: "contain",
+    backgroundSize: "cover",
   },
 
   innerContainer: {
