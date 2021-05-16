@@ -4,14 +4,17 @@ import ExampleServices from "./ExampleServices";
 import Jumbotron from "./Jumbotron";
 import Section3 from "./Section3";
 import Testimonial from "./Testimonial";
+import Fade from "react-reveal/Fade";
 
 function Homepage() {
   return (
     <div>
-      <Jumbotron />
-      <ExampleServices />
-      <Section3 />
-      <Testimonial />
+      <Fade bottom>
+        <Jumbotron />
+        <ExampleServices />
+        <Section3 />
+        <Testimonial />
+      </Fade>
     </div>
   );
 }

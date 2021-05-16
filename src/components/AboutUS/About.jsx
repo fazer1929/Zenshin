@@ -15,8 +15,8 @@ import {
 import React from "react";
 import kuldeep from "./kuldeep.jpg";
 import abhishek from "./abhishek.jpg";
-import { a } from "react-router-dom";
 import { GitHub, Instagram, LinkedIn, Twitter } from "@material-ui/icons";
+import Fade from "react-reveal/Fade";
 
 const useStyles = makeStyles({
   root: {
@@ -39,97 +39,99 @@ function About() {
   const classes = useStyles();
 
   return (
-    <Container className={classes.root}>
-      <Grid container justify="center">
-        <Grid xs={12}>
-          <Box my={3}>
-            <Typography variant="h3">Our Team</Typography>
-          </Box>
-        </Grid>
-        <Grid xs={12} md={4} justify="center" align="center">
-          <Card className={classes.card}>
-            <CardActionArea>
-              <CardMedia
-                component="img"
-                alt="Kuldeep Patel"
-                height="340"
-                image={kuldeep}
-                title="Kuldeep Patel"
-              />
-              <CardContent>
-                <Typography
-                  gutterBottom
-                  variant="h5"
-                  component="h2"
-                  align="center"
-                >
-                  Kuldeep Patel
-                </Typography>
-                <Typography
-                  variant="body2"
-                  color="textSecondary"
-                  component="p"
-                ></Typography>
-              </CardContent>
-            </CardActionArea>
-            <CardActions className={classes.centerText}>
-              <a href="" target="_blank">
-                <Twitter />
-              </a>
-              <a href="" target="_blank">
-                <GitHub />
-              </a>
-              <a href="" target="_blank">
-                <Instagram />
-              </a>
-              <a href="" target="_blank">
-                <LinkedIn />
-              </a>
-            </CardActions>
-          </Card>
-        </Grid>
-        <Grid xs={12} md={4} justify="center" align="center">
-          <Card className={classes.card}>
-            <CardActionArea>
-              <CardMedia
-                component="img"
-                alt="Abhishek Agrawal"
-                height="340"
-                image={abhishek}
-                title="Abhishek Agrawal"
-              />
-              <CardContent>
-                <Typography
-                  gutterBottom
-                  variant="h5"
-                  component="h2"
-                  align="center"
-                >
-                  Abhishek Agrawal
-                </Typography>
-                <Typography
-                  variant="body2"
-                  color="textSecondary"
-                  component="p"
-                ></Typography>
-              </CardContent>
-            </CardActionArea>
-            <CardActions className={classes.centerText}>
-              <a href="" target="_blank">
-                <Twitter />
-              </a>
-              <a href="" target="_blank">
-                <GitHub />
-              </a>
+    <Fade bottom>
+      <Container className={classes.root}>
+        <Grid container justify="center">
+          <Grid xs={12}>
+            <Box my={3}>
+              <Typography variant="h3">Our Team</Typography>
+            </Box>
+          </Grid>
+          <Grid xs={12} md={4} justify="center" align="center">
+            <Card className={classes.card}>
+              <CardActionArea>
+                <CardMedia
+                  component="img"
+                  alt="Kuldeep Patel"
+                  height="340"
+                  image={kuldeep}
+                  title="Kuldeep Patel"
+                />
+                <CardContent>
+                  <Typography
+                    gutterBottom
+                    variant="h5"
+                    component="h2"
+                    align="center"
+                  >
+                    Kuldeep Patel
+                  </Typography>
+                  <Typography
+                    variant="body2"
+                    color="textSecondary"
+                    component="p"
+                  ></Typography>
+                </CardContent>
+              </CardActionArea>
+              <CardActions className={classes.centerText}>
+                <a href="" target="_blank">
+                  <Twitter />
+                </a>
+                <a href="" target="_blank">
+                  <GitHub />
+                </a>
+                <a href="" target="_blank">
+                  <Instagram />
+                </a>
+                <a href="" target="_blank">
+                  <LinkedIn />
+                </a>
+              </CardActions>
+            </Card>
+          </Grid>
+          <Grid xs={12} md={4} justify="center" align="center">
+            <Card className={classes.card}>
+              <CardActionArea>
+                <CardMedia
+                  component="img"
+                  alt="Abhishek Agrawal"
+                  height="340"
+                  image={abhishek}
+                  title="Abhishek Agrawal"
+                />
+                <CardContent>
+                  <Typography
+                    gutterBottom
+                    variant="h5"
+                    component="h2"
+                    align="center"
+                  >
+                    Abhishek Agrawal
+                  </Typography>
+                  <Typography
+                    variant="body2"
+                    color="textSecondary"
+                    component="p"
+                  ></Typography>
+                </CardContent>
+              </CardActionArea>
+              <CardActions className={classes.centerText}>
+                <a href="" target="_blank">
+                  <Twitter />
+                </a>
+                <a href="" target="_blank">
+                  <GitHub />
+                </a>
 
-              <a href="" target="_blank">
-                <LinkedIn />
-              </a>
-            </CardActions>
-          </Card>
+                <a href="" target="_blank">
+                  <LinkedIn />
+                </a>
+              </CardActions>
+            </Card>
+          </Grid>
         </Grid>
-      </Grid>
-    </Container>
+      </Container>
+    </Fade>
   );
 }
 

@@ -6,6 +6,7 @@ import { db } from "../../firebase";
 import { useAuth } from "../../contexts/AuthContext";
 import ServiceCard from "./ServiceCard";
 import { Container, Grid } from "@material-ui/core";
+import Fade from "react-reveal/Fade";
 
 function Dashboard() {
   const { currentUser } = useAuth();
@@ -25,19 +26,23 @@ function Dashboard() {
 
   return (
     <div style={{ marginTop: "90px" }}>
-      <Header
-        countries={countries}
-        allservices={services}
-        setCurrentServices={setCurrentServices}
-        categories={categories}
-      />
-      <Container>
-        <Grid container justify="center">
-          {currentServices.map((data, i) => {
-            return <ServiceCard key={i} data={data} />;
-          })}
-        </Grid>
-      </Container>
+      <Fade>
+        <Header
+          countries={countries}
+          allservices={services}
+          setCurrentServices={setCurrentServices}
+          categories={categories}
+        />
+      </Fade>
+      <Fade bottom>
+        <Container>
+          <Grid container justify="center">
+            {currentServices.map((data, i) => {
+              return <ServiceCard key={i} data={data} />;
+            })}
+          </Grid>
+        </Container>
+      </Fade>
     </div>
   );
 }
