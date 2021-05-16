@@ -12,7 +12,11 @@ import {
 } from "@material-ui/core";
 import React from "react";
 import defaultImage from "./defaultServiceCardImage.png";
-
+import PersonIcon from "@material-ui/icons/Person";
+import RoomIcon from "@material-ui/icons/Room";
+import LocalOfferOutlinedIcon from "@material-ui/icons/LocalOfferOutlined";
+import CategoryRoundedIcon from "@material-ui/icons/CategoryRounded";
+import CategoryOutlinedIcon from "@material-ui/icons/CategoryOutlined";
 const useStyles = makeStyles({
   root: {
     maxWidth: 345,
@@ -26,6 +30,10 @@ const useStyles = makeStyles({
   bottom: {
     position: "absolute",
     bottom: "10px",
+  },
+  useIcons: {
+    alignItems: "center",
+    display: "flex",
   },
 });
 
@@ -45,11 +53,21 @@ function ServiceCard({ data }) {
               {data.title}
             </Typography>
             <Box mb={2} fontWeight="600" color="text.primary">
-              <Typography variant="body1" component="p">
-                - {data?.fullname} / ${data?.price} (approx)
+              <Typography
+                variant="body1"
+                component="p"
+                className={classes.useIcons}
+              >
+                <PersonIcon /> &nbsp; {data?.fullname} &nbsp;&nbsp;&nbsp;
+                <LocalOfferOutlinedIcon /> {data?.price} (approx)
               </Typography>
-              <Typography variant="body1" color="textSecondary" component="p">
-                {data?.availability} / {data?.location}
+              <Typography
+                className={classes.useIcons}
+                variant="body1"
+                color="textSecondary"
+                component="p"
+              >
+                <RoomIcon /> {data?.availability} / {data?.location}
               </Typography>
             </Box>
 
@@ -58,7 +76,12 @@ function ServiceCard({ data }) {
               {data.information.length > 200 ? "..." : ""}
             </Typography>
             <Box my={2}>
-              <Typography variant="body1" component="p">
+              <Typography
+                variant="body1"
+                component="p"
+                className={classes.useIcons}
+              >
+                <CategoryOutlinedIcon /> &nbsp;
                 {data?.category?.toUpperCase()}
               </Typography>
             </Box>
