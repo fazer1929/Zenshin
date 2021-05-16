@@ -14,12 +14,13 @@ import Account from "./components/ProfileComponent/Account";
 import Contact from "./components/ContactComponent/Contact";
 import About from "./components/AboutUS/About";
 import ScrollToTop from "./components/ScrollToTop";
+import theme from "./theme/theme";
+import { ThemeProvider } from "@material-ui/core/styles";
 
 function App() {
   return (
-    <>
+    <ThemeProvider theme={theme}>
       <Router>
-
         <ScrollToTop>
           <AuthProvider>
             <Navbar />
@@ -40,7 +41,7 @@ function App() {
           </AuthProvider>
         </ScrollToTop>
       </Router>
-    </>
+    </ThemeProvider>
   );
 }
 

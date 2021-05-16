@@ -7,6 +7,8 @@ import {
   Typography,
   Box,
 } from "@material-ui/core";
+import img1 from "./img1.png";
+import img2 from "./img2.png";
 const useStyles = makeStyles({
   image: {
     width: "80%",
@@ -29,11 +31,11 @@ function Section3() {
     <>
       <Container>
         <Grid container spacing={2} className={classes.section3}>
-          <Grid item xs={12} lg={6}>
-            <img className={classes.image}></img>
+          <Grid item xs={12} sm={6}>
+            <img src={img1} className={classes.image}></img>
           </Grid>
 
-          <Grid item xs={12} lg={6} className={classes.center}>
+          <Grid item xs={12} sm={6} className={classes.center}>
             <Typography variant="body1" style={{ fontWeight: "700" }}>
               Awesomeness
             </Typography>
@@ -50,10 +52,10 @@ function Section3() {
         </Grid>
       </Container>
 
-      <Container>
+      {/* <Container>
         <Grid container spacing={2} className={classes.section3}>
-          <Box clone order={{ xs: 2, md: 1 }}>
-            <Grid item xs={12} lg={6} className={classes.center}>
+          <Box clone order={{ xs: 2, sm: 1 }}>
+            <Grid item xs={12} sm={6} className={classes.center}>
               <Typography variant="body1" style={{ fontWeight: "700" }}>
                 Awesomeness
               </Typography>
@@ -69,13 +71,13 @@ function Section3() {
             </Grid>
           </Box>
 
-          <Box order={{ xs: 1, md: 2 }}>
-            <Grid item xs={12} lg={6} justify="center" align="center">
-              <img className={classes.image}></img>
+          <Box order={{ xs: 1, sm: 2 }}>
+            <Grid item xs={12} sm={6} justify="center" align="center">
+              <img src={img2} className={classes.image}></img>
             </Grid>
           </Box>
         </Grid>
-      </Container>
+      </Container> */}
     </>
   );
 }

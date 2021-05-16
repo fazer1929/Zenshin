@@ -14,7 +14,6 @@ import React from "react";
 import { Link } from "react-router-dom";
 import defaultImage from "./defaultServiceCardImage.png";
 
-
 import PersonIcon from "@material-ui/icons/Person";
 import RoomIcon from "@material-ui/icons/Room";
 import LocalOfferOutlinedIcon from "@material-ui/icons/LocalOfferOutlined";
@@ -32,7 +31,7 @@ const useStyles = makeStyles({
   },
   bottom: {
     position: "absolute",
-    bottom: "10px",
+    bottom: "5px",
   },
   useIcons: {
     alignItems: "center",
@@ -92,12 +91,15 @@ function ServiceCard({ data }) {
         </CardActionArea>
 
         <CardActions className={classes.bottom}>
-            <Link to={`/contact/${data.uid}/${data.title}`}>
-          <Button size="small" color="primary" >
+          <Button
+            to={`/contact/${data.uid}/${data.title}`}
+            component={Link}
+            size="medium"
+            color="secondary"
+          >
             Contact
           </Button>
-            </Link>
-          <Button size="small" color="primary">
+          <Button size="medium" color="secondary">
             Learn More
           </Button>
         </CardActions>
