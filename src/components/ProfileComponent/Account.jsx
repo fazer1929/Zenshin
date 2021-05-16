@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import userLogo from "../../assets/user.png";
 // import { Helmet } from 'react-helmet';
 import {
@@ -19,6 +19,8 @@ import {
 // import AccountProfile from 'src/components/account/AccountProfile';
 // import AccountProfileDetails from 'src/components/account/AccountProfileDetails';
 import Fade from "react-reveal/Fade";
+import { db, storage } from "../../firebase";
+import { useAuth } from "../../contexts/AuthContext";
 
 const user = {
   avatar: userLogo,
@@ -62,6 +64,23 @@ function Account() {
     country: "India",
   });
 
+  const [profile, setProfile] = useState([]);
+  const { currentUser, logout } = useAuth();
+
+  useEffect(async () => {
+    if (currentUser) {
+      db.collection("accounts")
+        .doc(currentUser.uid)
+        .onSnapshot(async function (doc) {
+          const data = await doc.data();
+           setProfile(data);
+        });
+
+
+    }
+  }, [currentUser]);
+
+console.log(currentUser)
   const handleChange = (event) => {
     setValues({
       ...values,
@@ -97,24 +116,25 @@ function Account() {
                       }}
                     >
                       <Avatar
-                        src={user.avatar}
+                        src={currentUser.photoURL ? currentUser.photoURL : userLogo}
                         sx={{
                           height: 100,
                           width: 100,
                         }}
                       />
                       <Typography color="textPrimary" gutterBottom variant="h3">
-                        {user.name}
+                        {profile.fullname}
                         {/* user Name */}
                       </Typography>
                       <Typography color="textSecondary" variant="body1">
-                        {`${user.city} ${user.country}`}
-                        {/* city Country */}
+                        {profile.email}
+                        
                       </Typography>
-                      <Typography color="textSecondary" variant="body1">
-                        {` ${user.timezone}`}
+                       <Typography color="textSecondary" variant="body1">
+                        
+                        {/* {` ${user.timezone}`} */}
                         {/* Time */}
-                      </Typography>
+                      </Typography> 
                     </Box>
                   </CardContent>
                   <Divider />
@@ -137,29 +157,19 @@ function Account() {
                     <Divider />
                     <CardContent>
                       <Grid container spacing={3}>
-                        <Grid item md={6} xs={12}>
+                        <Grid item md={12} xs={12}>
                           <TextField
                             fullWidth
-                            helperText="Please specify the first name"
-                            label="First name"
-                            name="firstName"
+                            helperText="Please specify the Full Name"
+                            label="Full Name"
+                            name="fullname"
                             onChange={handleChange}
                             required
                             value={values.firstName}
                             variant="outlined"
                           />
                         </Grid>
-                        <Grid item md={6} xs={12}>
-                          <TextField
-                            fullWidth
-                            label="Last name"
-                            name="lastName"
-                            onChange={handleChange}
-                            required
-                            value={values.lastName}
-                            variant="outlined"
-                          />
-                        </Grid>
+
                         <Grid item md={6} xs={12}>
                           <TextField
                             fullWidth
@@ -167,7 +177,7 @@ function Account() {
                             name="email"
                             onChange={handleChange}
                             required
-                            value={values.email}
+                            value={profile.email}
                             variant="outlined"
                           />
                         </Grid>
@@ -182,7 +192,7 @@ function Account() {
                             variant="outlined"
                           />
                         </Grid>
-                        <Grid item md={6} xs={12}>
+                        {/* <Grid item md={6} xs={12}>
                           <TextField
                             fullWidth
                             label="Country"
@@ -211,7 +221,7 @@ function Account() {
                               </option>
                             ))}
                           </TextField>
-                        </Grid>
+                        </Grid> */}
                       </Grid>
                     </CardContent>
                     <Divider />

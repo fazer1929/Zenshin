@@ -68,6 +68,7 @@ const useStyles = makeStyles((theme) => ({
   profileImage: {
     maxWidth: "100px",
     margin: "10px",
+    borderRadius: "50%"
   },
   addServiceButton: {
     marginTop: "5px",
@@ -114,7 +115,7 @@ function Profile() {
               <Grid item xs={12} sm={4} align="center" justify="center">
                 <Grid>
                   <div style={{ alignItems: "center", textAlign: "center" }}>
-                    <img src={userLogo} className={classes.profileImage} />
+                    <img src={currentUser.photoURL ? currentUser.photoURL : userLogo} className={classes.profileImage} />
                     <p className={classes.profileName}>{profile?.fullname}</p>
                     <p className={classes.profileEmail}>{profile?.email}</p>
                   </div>
