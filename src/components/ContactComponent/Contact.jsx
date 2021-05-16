@@ -33,23 +33,23 @@ const Chat = (props) => {
 
   const { currentUser } = useAuth();
 
-  const [datas, setDatas] = useState({
-    selectTitle: '',
-    sendTo: "",
-  });
+  // const [datas, setDatas] = useState({
+  //   selectTitle: '',
+  //   sendTo: "",
+  // });
 
-  useEffect(() => {
-    if(props.match?.params){
-    setDatas({
-      selectTitle: props.match.params.title,
-      sendTo: props.match.params.id,
-    })}
-  },[props])
+  // useEffect(() => {
+  //   if(props.match?.params){
+  //   setDatas({
+  //     selectTitle: props.match.params.title,
+  //     sendTo: props.match.params.id,
+  //   })}
+  // },[props])
 
   return (
     <div className='contact-app' style={{ marginTop: "70px"}}>
       <header>
-        <h1>{datas.selectTitle}</h1>
+        <h1>Messages</h1>
       </header>
 
       <section>
@@ -67,20 +67,18 @@ function ChatRoom(props) {
   const [messages] = useCollectionData(query, { idField: "id" });
 
   const [formValue, setFormValue] = useState("");
-  const { uid, photoURL } = auth.currentUser;
-
-  const [saveSendTo, setSaveSendTo] = useState('');
 
 
-for (var i = 0; i < messages?.length; i++) {
-  if(messages[i].sendTo == uid){
-    console.log("chatrome",messages[i].sendTo)
-    setSaveSendTo(messages[i].uid)
-  }
-  else{
-    console.log("not match")
-  }
-}
+
+// for (var i = 0; i < messages?.length; i++) {
+//   if(messages[i].sendTo == uid){
+//     console.log("chatrome",messages[i].sendTo)
+//     setSaveSendTo(messages[i].uid)
+//   }
+//   else{
+//     console.log("not match")
+//   }
+// }
   
 
   const sendMessage = async (e) => {
@@ -93,8 +91,7 @@ for (var i = 0; i < messages?.length; i++) {
         text: formValue,
         //   createdAt: firebase.db.Timestamp.serverTimestamp(),
         createdAt: new Date(),
-        sendTo: saveSendTo,
-        selectTitle: props.match.params?.title,
+ 
         uid,
         photoURL,
       
@@ -132,8 +129,7 @@ for (var i = 0; i < messages?.length; i++) {
 
 function ChatMessage(props) {
 
-  const { text, uid, photoURL, sendTo,selectTitle } = props.message;
-  const { currentUser } = useAuth();
+  const { text, uid, photoURL,  } = props.message;
   
   // const {id, title} = props.props.match.params;
 // {console.log(props)}
@@ -146,12 +142,13 @@ function ChatMessage(props) {
     <>
     {  
     // title == selectTitle
-    sendTo == (currentUser.uid) || uid == currentUser.uid
-     ?
+    // sendTo == (currentUser.uid) || uid == currentUser.uid
+    //  ?
       (<div className={`message ${messageClass}`}>
         <img src={photoURL || userLogo} />
         <p>{text}</p>
-      </div>):(<div></div>)
+      </div>)
+      // :(<div></div>)
 }
     </>
   );
