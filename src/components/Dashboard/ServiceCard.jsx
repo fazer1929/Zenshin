@@ -11,7 +11,9 @@ import {
   Box,
 } from "@material-ui/core";
 import React from "react";
+import { Link } from "react-router-dom";
 import defaultImage from "./defaultServiceCardImage.png";
+
 
 const useStyles = makeStyles({
   root: {
@@ -66,9 +68,11 @@ function ServiceCard({ data }) {
         </CardActionArea>
 
         <CardActions className={classes.bottom}>
-          <Button size="small" color="primary">
+            <Link to={`/contact/${data.uid}/${data.title}`}>
+          <Button size="small" color="primary" >
             Contact
           </Button>
+            </Link>
           <Button size="small" color="primary">
             Learn More
           </Button>

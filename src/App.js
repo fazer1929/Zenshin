@@ -11,6 +11,7 @@ import PrivateRoute from "./PrivateRoute";
 import Navbar from "./components/Navbar/Navbar";
 import Dashboard from "./components/Dashboard/Dashboard";
 import Account from "./components/ProfileComponent/Account";
+import Contact from "./components/ContactComponent/Contact";
 function App() {
   return (
     <>
@@ -25,6 +26,7 @@ function App() {
             <Route exact path="/login" component={Login} />
             <Route exact path="/resetPassword" component={ForgotPassword} />
             <Route exact path="/signup" component={Signup} />
+            <Route exact path="/contact/:id/:title" component={Contact} />
             <PrivateRoute exact path="/addService" component={AddService} />
           </Switch>
           <Footer />

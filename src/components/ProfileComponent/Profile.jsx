@@ -7,6 +7,7 @@ import {
 
   MenuList,
   MenuItem,
+  Typography,
 } from "@material-ui/core";
 
 import React, { useEffect, useState } from "react";
@@ -14,11 +15,19 @@ import { useAuth } from "../../contexts/AuthContext";
 import { db, storage } from "../../firebase";
 import Account from "./Account";
 import ProfileContent from "./ProfileContent";
+import userLogo from '../../assets/user.png';
+import Contact from '../ContactComponent/Contact'
 
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
     margin: "10px",
+  },
+  profileLeft:{
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "space-between",
+    maxHeight: "50vh"
   },
   serviceList: {
     width: "100%",
@@ -52,6 +61,19 @@ const useStyles = makeStyles((theme) => ({
       backgroundColor: "#ed8366",
     },
   },
+  profileEmail :{
+    fontSize: '18px',
+    margin: '2px'
+
+  },
+  profileName : {
+    fontSize: '28px',
+    fontWeight: 'bold',
+    margin: '2px'
+  },
+  profileImage : {
+    maxWidth: '100px',margin: "10px"
+  }
 }));
 
 function Profile() {
@@ -90,42 +112,62 @@ function Profile() {
         <div className={classes.root}>
           <Grid container spacing={3}>
             <Grid item xs={12} sm={4}>
-            <div>
-                <p>{profile?.email}</p>
-                <p>{profile?.fullname}</p>
+            <div style={{alignItems:'center',textAlign: 'center'}}>
+                <img src={userLogo} className={classes.profileImage}/>
+                <p className={classes.profileName}>{profile?.fullname}</p>
+                <p className={classes.profileEmail}>{profile?.email}</p>
               </div>
             </Grid>
             <Grid item xs={12} sm={8}>
               
             </Grid>
-            <Grid item xs={12} sm={4}>
+            <Grid item xs={12} sm={4} className={classes.profileLeft}>
 
               <Paper className={classes.paper}>
                 <MenuList>
                   <MenuItem onClick={()=>setMenuNo('1')}>Profile</MenuItem>
                   <MenuItem onClick={()=>setMenuNo('2')}>Account</MenuItem>
+                  <MenuItem onClick={()=>setMenuNo('3')}>Messages</MenuItem>
                   <MenuItem className={classes.logoutButton} onClick={logout}>
                     Logout
                   </MenuItem>
                 </MenuList>
               </Paper>
+              <Paper className={classes.paper} style={{marginTop: '5px',backgroundColor:"#03CA95"}}>
+                  <MenuItem style={{justifyContent: 'center'}}>
+                  
+                   <a href='/addservice' style={{textDecoration: "none",color:'#191C27'}}>Add Service</a>
+                  </MenuItem>
+                  
+              </Paper>
             </Grid>
             <Grid item xs={12} sm={8}>
-          { menuNo == '1' ? ( <div>    {services.length > 0 && (
+          { menuNo == '1' ? ( <div>  
+            
+              {services.length > 0 ? (
                 <div>
                   {services.map((data, i) => {
                     return <ProfileContent data={data} key={i} />;
                   })}
                 </div>
-              )}  </div>  ) :
-              <Account/>
+              ):(
+
+                <Typography >No Service Found, Please Add A New Service</Typography>
+
+              )}
+              
+               </div>  ) : (
+
+                menuNo == '2' ? (
+
+                  <Account/>
+                  ): <Contact/>
+              )
 
       }
             </Grid>
           </Grid>
-          <div>
-            <a href='/addservice'>Add Service</a>
-          </div>
+
         </div>
       )}
     </div>

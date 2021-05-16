@@ -54,8 +54,7 @@ function ProfileContent(props) {
 
     return (
         <div>
-            {console.log(props.data)}
-            <Accordion >
+            <Accordion style={{margin:"5px"}} >
 <AccordionSummary
           expandIcon={<ExpandMoreIcon />}
           aria-controls="panel1bh-content"
