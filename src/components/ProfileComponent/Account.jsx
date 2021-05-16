@@ -47,7 +47,7 @@ const states = [
 const useStyles = makeStyles({
   root: {
     marginTop: "100px",
-    height: "60vh",
+    marginBottom: "100px",
   },
 });
 
