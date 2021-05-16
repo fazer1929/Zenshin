@@ -120,12 +120,14 @@ function Profile() {
                     <p className={classes.profileEmail}>{profile?.email}</p>
                   </div>
                 </Grid>
-                <Grid>
+               <Grid>
                   <Paper className={classes.paper}>
                     <MenuList>
-                      <MenuItem onClick={() => setMenuNo("1")}>
+                    {
+                  profile.servicesProvider ? 
+                      (<MenuItem onClick={() => setMenuNo("1")}>
                         Profile
-                      </MenuItem>
+                      </MenuItem>) : (<div></div>)}
                       <MenuItem onClick={() => setMenuNo("2")}>
                         Account
                       </MenuItem>
@@ -140,6 +142,9 @@ function Profile() {
                       </MenuItem>
                     </MenuList>
                   </Paper>
+                  {
+                  profile.servicesProvider ? 
+                (
                   <Paper
                     className={clx(classes.paper, classes.addServiceButton)}
                   >
@@ -151,7 +156,12 @@ function Profile() {
                       Add Service
                     </MenuItem>
                   </Paper>
-                </Grid>
+                  ) : (
+                    <div></div>
+                )
+                
+                }
+                </Grid> 
               </Grid>
               <Grid item xs={12} sm={8}>
                 {menuNo == "1" ? (
